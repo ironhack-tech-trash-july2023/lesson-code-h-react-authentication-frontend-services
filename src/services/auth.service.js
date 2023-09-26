@@ -2,6 +2,10 @@ import axios from "axios";
 
 class AuthService {
   constructor() {
+    
+    console.log("SERVER_URL... ", import.meta.env.SERVER_URL);
+    console.log(import.meta.env);
+
     this.api = axios.create({
       baseURL: import.meta.env.SERVER_URL || "http://localhost:5005",
     });
@@ -21,20 +25,14 @@ class AuthService {
 
   login = (requestBody) => {
     return this.api.post("/auth/login", requestBody);
-    // same as
-    // return axios.post("http://localhost:5005/auth/login");
   };
 
   signup = (requestBody) => {
     return this.api.post("/auth/signup", requestBody);
-    // same as
-    // return axios.post("http://localhost:5005/auth/singup");
   };
 
   verify = () => {
     return this.api.get("/auth/verify");
-    // same as
-    // return axios.post("http://localhost:5005/auth/verify");
   };
 }
 
